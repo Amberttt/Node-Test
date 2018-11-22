@@ -19,6 +19,10 @@ const conn = mysql.createConnection({
     multipleStatements: true    // 允许执行多条语句
 })
 
+app.get('/indexGet.html', function (req, res) {
+    res.sendFile(__dirname + "/" + "indexGet.html");
+})
+
 // get列表
 app.get('/api/getList', (req, res) => {
     const sqlStr = 'select * from user '

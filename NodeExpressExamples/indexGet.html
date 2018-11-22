@@ -1,0 +1,28 @@
+<html>
+
+<body>
+    <form action="http://127.0.0.1:8081/api/login" method="GET">
+        First Name:
+        <input type="text" name="user" id="user">
+        <br> Last Name:
+        <input type="text" name="pwd" id="pwd">
+        <!-- <input type="submit" value="Submit"> -->
+    </form>
+    <button id="login">登录</button>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	document.getElementById('login').onclick = function () {
+		var user = document.getElementById('user').value;
+		var pwd = document.getElementById('pwd').value;
+		axios.get('/api/login',{
+			params: {
+				user: user,
+				pwd: pwd
+			}
+		}).then((res)=>{
+			console.log(res.data,'---data---');
+		});
+	}
+</script>
+</html>
