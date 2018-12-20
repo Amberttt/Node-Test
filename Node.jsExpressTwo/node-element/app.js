@@ -5,14 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+///=======路由信息 （接口地址）开始 存放在./routes目录下===========//
+var index = require('./routes/index'); //home page接口
+var users = require('./routes/users'); //用户接口
+var login = require('./routes/login'); //登录接口
+///=======路由信息 （接口地址) 介绍===========//
 
 var app = express();
 
+///=======模板 开始===========//
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+///=======模板 结束===========//
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -24,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
